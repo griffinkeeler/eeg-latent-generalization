@@ -14,15 +14,13 @@ I will use the self-supervised EEG Diffusion Model (EEGDM) proposed by Chang et 
 ## Method
 
 ### Datasets
-For pre-training, the 
-The TUH EEG Corpus (TUEG), a rich archive of 
-26,846 clinical EEG recordings collected at Temple University Hospital (TUH) from 2002 - 2017, will be used.
-
-Read this [journal paper](https://isip.piconepress.com/publications/journals_refereed/2016/frontiers_neuroscience/tuh_eeg/) 
-for a more complete description of the corpus.
+For pre-training, the Temple University Abnormal EEG Corpus (TUAB),
+a corpus of EEGs that have been annotated as normal or abnormal, will be used. 
+Read [Silvia Lopez's MS thesis](https://isip.piconepress.com/publications/ms_theses/2017/abnormal/thesis/) 
+for a description of the corpus.
 
 ### Preprocessing
-
+All data is resampled to 200Hz.
 
 ## References
 [1] Shaocong Wang, Tong Liu, Yihan Li, Ming Li, Kairui Wen, Pei Yang, Wenqi Ji, Minjing Yu, and Yong-Jin Liu,
