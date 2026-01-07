@@ -20,8 +20,12 @@ Read [Silvia Lopez's MS thesis](https://isip.piconepress.com/publications/ms_the
 for a description of the corpus.
 
 ### Preprocessing
-All data is resampled to 200Hz.
+All data is resampled to 200Hz and a fifth-order band-pass Butterworth filter is applied (0.3-80Hz), as done in 
+Mohsenvand and Izadi's paper [2]. 
 
 ## References
 [1] Shaocong Wang, Tong Liu, Yihan Li, Ming Li, Kairui Wen, Pei Yang, Wenqi Ji, Minjing Yu, and Yong-Jin Liu,
 "EEGDM: Learning EEG Representation with Latent Diffusion Model"
+
+[2] Mostafa 'Neo' Mohsenvand, Mohammad Rasool Izadi, "Contrastive Representation Learning for
+Electroencephalogram Classification"
