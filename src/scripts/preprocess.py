@@ -1,9 +1,7 @@
-import matplotlib.pyplot as plt
 from mne.io import read_raw
 
 
-# TODO: Update docstring and add Butterworth filter
-def preprocess(file_path):
+def _preprocess(file_path):
     """
 
     Args:
@@ -20,14 +18,14 @@ def preprocess(file_path):
     # Resample the data to 200Hz
     raw.resample(sfreq=200)
 
-    raw.plot(start=374, duration=20)
+    # Set IIR Filter params
+    iir_params = dict(order=5, ftype="butter")
 
-
-
-file_path1 = '/Users/griffinkeeler/v2.0.1/edf/000/aaaaaaaa/s001_2015/01_tcp_ar/aaaaaaaa_s001_t000.edf'
-preprocess(file_path1)
-
-plt.show()
-
-
-
+    # Apply the fifth order Butterworth filter (0.3-80 Hz)
+    raw.filter(
+        l_freq=0.3,
+        h_freq=80,
+        method="iir",
+        iir_params=iir_params,
+        verbose=True,
+    )
