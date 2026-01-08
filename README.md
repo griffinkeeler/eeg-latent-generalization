@@ -20,8 +20,9 @@ Read [Silvia Lopez's MS thesis](https://isip.piconepress.com/publications/ms_the
 for a description of the corpus.
 
 ### Preprocessing
-All data is resampled to 200Hz and a fifth-order band-pass Butterworth filter is applied (0.3-80Hz), as done in 
-Mohsenvand and Izadi's paper [2]. 
+19 common EEG channels are selected for pre-training [3]. 
+All data is resampled to 200Hz and a fifth-order band-pass Butterworth filter is applied (0.3-80Hz) [2]. 
+
 
 ## References
 [1] Shaocong Wang, Tong Liu, Yihan Li, Ming Li, Kairui Wen, Pei Yang, Wenqi Ji, Minjing Yu, and Yong-Jin Liu,
@@ -29,3 +30,7 @@ Mohsenvand and Izadi's paper [2].
 
 [2] Mostafa 'Neo' Mohsenvand, Mohammad Rasool Izadi, "Contrastive Representation Learning for
 Electroencephalogram Classification"
+
+[3]: J. Wang, S. Zhao, Z. Luo, Y. Zhou, H. Jiang, S. Li, T. Li, and G. Pan,
+“Cbramod: A criss-cross brain foundation model for eeg decoding,”
+International conference on learning representations, 2025.
