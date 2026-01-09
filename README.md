@@ -14,16 +14,23 @@ I will use the self-supervised EEG Diffusion Model (EEGDM) proposed by Chang et 
 ## Method
 
 ### Datasets
-For pre-training, the 
-The TUH EEG Corpus (TUEG), a rich archive of 
-26,846 clinical EEG recordings collected at Temple University Hospital (TUH) from 2002 - 2017, will be used.
-
-Read this [journal paper](https://isip.piconepress.com/publications/journals_refereed/2016/frontiers_neuroscience/tuh_eeg/) 
-for a more complete description of the corpus.
+For pre-training, the Temple University Abnormal EEG Corpus (TUAB),
+a corpus of EEGs that have been annotated as normal or abnormal, will be used. 
+Read [Silvia Lopez's MS thesis](https://isip.piconepress.com/publications/ms_theses/2017/abnormal/thesis/) 
+for a description of the corpus.
 
 ### Preprocessing
+19 common EEG channels are selected for pre-training [3]. 
+All data is resampled to 200Hz and a fifth-order band-pass Butterworth filter is applied (0.3-80Hz) [2]. 
 
 
 ## References
 [1] Shaocong Wang, Tong Liu, Yihan Li, Ming Li, Kairui Wen, Pei Yang, Wenqi Ji, Minjing Yu, and Yong-Jin Liu,
 "EEGDM: Learning EEG Representation with Latent Diffusion Model"
+
+[2] Mostafa 'Neo' Mohsenvand, Mohammad Rasool Izadi, "Contrastive Representation Learning for
+Electroencephalogram Classification"
+
+[3]: J. Wang, S. Zhao, Z. Luo, Y. Zhou, H. Jiang, S. Li, T. Li, and G. Pan,
+“Cbramod: A criss-cross brain foundation model for eeg decoding,”
+International conference on learning representations, 2025.
