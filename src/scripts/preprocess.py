@@ -57,3 +57,6 @@ def _preprocess(file_path):
         iir_params=iir_params,
         verbose=True,
     )
+
+    # Return the preprocessed raw object
+    return raw
