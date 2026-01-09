@@ -1,4 +1,3 @@
-import mne
 from mne.io import read_raw
 
 
