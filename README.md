@@ -2,11 +2,12 @@
 ___
 
 ## Overview
-Decoding EEG signals across different subjects is challenging due to the variance of neural signals and the noisy nature of EEG. 
-Recent machine-learning methods have addressed the challenges of generalization
-by encoding latent representations to generate semantic EEG signals. However, evaluating how the dimensionality of the latent 
-space affects cross-subject generalization is largely unstudied. In this project, I will study the robustness of
-various latent dimensions across subjects. 
+Decoding EEG signals across subjects remains challenging due to high inter-subject variability and noise. 
+Recent representation-learning approaches attempt to address this by learning latent spaces that capture 
+subject-invariant structure, yet the role of latent dimensionality in cross-subject generalization remains 
+underexplored. In this project, I investigate how latent space dimensionality affects robustness and generalization 
+across subjects, testing the hypothesis that an optimal bottleneck exists which balances representational capacity
+and noise suppression.
 
 ## Representation Learning Using EEGDM
 I will use the self-supervised EEG Diffusion Model (EEGDM) proposed by Chang et al. [1] to learn latent representations of the EEG signal.
