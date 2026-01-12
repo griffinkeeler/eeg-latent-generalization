@@ -27,3 +27,21 @@ def zero_mask(ep):
 
         # Set the zero-mask to the random segment
         ch[s : s + L] = 0
+
+
+def amp_scale(ep):
+    """
+    Applies a random scalar value (0.5-2.0) to the EEG channels.
+
+    Args:
+        ep (ndarray): A sequence of time points from each channel.
+
+    Returns:
+        None
+    """
+    for i, ch in enumerate(ep):
+        # Generates a random scalar (0.5-2.0)
+        scalar = float(0.5 + 1.5 * torch.rand(1))
+
+        # Apply the amplitude scaling to the EEG signal
+        ep[i] = ch * scalar
