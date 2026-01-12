@@ -2,11 +2,11 @@ import mne
 import torch
 
 from src.scripts.preprocess import preprocess
-
+from src.augmentation.augments import zero_mask, amp_scale
 
 def create_tokens(file_path):
     """
-    Creates a batch of tokens and boolean masks to be inputted
+    Creates a batch of tokens to be inputted
     to the encoder.
 
     Args:
@@ -18,8 +18,6 @@ def create_tokens(file_path):
             C = The number of channels
             P = The number of patches
             t = The window length
-
-        mask_batch (torch.Tensor): A batch of boolean masks with shape (N, C*P)
     """
 
     # The preprocessed Raw object
@@ -30,12 +28,18 @@ def create_tokens(file_path):
 
     # Stores the tokens and masks for each epoch
     total_tokens = []
-    total_masks = []
 
     # Shape (N, C, time points)
     data = epochs.get_data()
 
     for ep in data:
+
+        # Apply amplitude scaling to each channel
+        amp_scale(ep)
+
+        # Apply a zero-mask to random samples (0-150) for each channel
+        zero_mask(ep)
+
         # Calculate the number of patches (time points / window length)
         window_length = 200
         n_channels, n_times = ep.shape
@@ -47,24 +51,13 @@ def create_tokens(file_path):
         # Convert numpy array to tensor and preserve float datatype
         patches = torch.from_numpy(patches).float()
 
-        # Threshold for Bernoulli distribution
-        r = 0.5
-
-        # Create boolean mask over (channel, patch) indices
-        mask_bool = torch.rand(size=[n_channels, n_patches]) < r
-
         # Flatten the patches into tokens
         tokens = patches.reshape(n_channels * n_patches, window_length)
 
-        # Add masks and tokens to a list
-        total_masks.append(mask_bool)
+        # Add tokens to a list
         total_tokens.append(tokens)
 
-    # Shape: (N, C, P)
-    masks_batch = torch.stack(total_masks)
-    # Shape: (N, C*P)
-    masks_batch = masks_batch.reshape(len(total_masks), -1)
     # Shape: (N, C*P, t)
     tokens_batch = torch.stack(total_tokens)
 
-    return tokens_batch, masks_batch
+    return tokens_batch
