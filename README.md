@@ -24,11 +24,14 @@ for a description of the corpus.
 19 common EEG channels are selected for pre-training [3]. 
 All data is resampled to 200Hz and a fifth-order band-pass Butterworth filter is applied (0.3-80Hz) [2]. 
 
+
+### Data Augmentation
+Zero-masking and amplitude scaling is applied, which were shown to be effective for extracting 
+useful features in previous studies [2]. 
+
 ### Patching and Embedding
 EEG data is segmented into 30-second samples (19 channels x 6,000 time points).
-Each patch has a temporal length of 1 second. Each sample has 570 patches (19 x 30). A boolean mask is generated
-for each sample, where patches are either kept or masked using Bernoulli Distribution [1]. 
-
+Each patch has a temporal length of 1 second. Each sample has 570 patches (19 x 30). 
 
 
 ## References
