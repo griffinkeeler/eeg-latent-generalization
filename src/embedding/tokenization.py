@@ -4,13 +4,15 @@ import torch
 from src.scripts.preprocess import preprocess
 from src.augmentation.augments import zero_mask, amp_scale
 
-def create_tokens(file_path):
+
+def create_tokens(file_path, augment: bool):
     """
     Creates a batch of tokens to be inputted
     to the encoder.
 
     Args:
         file_path (str): The path to the EDF file.
+        augment (bool): Option to apply zero-masking and amplitude scaling augmentations.
 
     Returns:
         tokens_batch (torch.Tensor): A batch of tokens with shape (N, C*P, t) where:
@@ -33,12 +35,13 @@ def create_tokens(file_path):
     data = epochs.get_data()
 
     for ep in data:
+        # Augmentation block
+        if augment:
+            # Apply amplitude scaling to each channel
+            amp_scale(ep)
 
-        # Apply amplitude scaling to each channel
-        amp_scale(ep)
-
-        # Apply a zero-mask to random samples (0-150) for each channel
-        zero_mask(ep)
+            # Apply a zero-mask to random samples (0-150) for each channel
+            zero_mask(ep)
 
         # Calculate the number of patches (time points / window length)
         window_length = 200
