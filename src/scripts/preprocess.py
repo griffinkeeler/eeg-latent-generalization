@@ -1,7 +1,7 @@
 from mne.io import read_raw
 
 
-def _preprocess(file_path):
+def preprocess(file_path):
     """
     Downsamples EEG data to 200 Hz and applies a fifth-order
     Butterworth filter (0.3-80Hz).
