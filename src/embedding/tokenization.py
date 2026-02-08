@@ -60,7 +60,7 @@ def create_tokens(file_path, augment: bool):
         # Add tokens to a list
         total_tokens.append(tokens)
 
-    # Shape: (N, C*P, t)
+    # Shape: (N, C*P, t)...e.g. (42, 570, 200)
     tokens_batch = torch.stack(total_tokens)
 
     return tokens_batch
